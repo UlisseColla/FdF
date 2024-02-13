@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/13 16:18:30 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/20 16:52:33 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/20 17:56:04 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		map;
-	int		**matrix;
-	char 	**split_map;
+	t_list	*tmp;
+	t_list	*new;
 
-	map = open(av[1], O_RDONLY);
-	split_map = ft_split(get_next_line(av[map]));
-	matrix 
+	if (!lst || !f || !del)
+		return (NULL);
+	new = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstdelone(tmp, del);
+			return (NULL);
+		}
+		lst = lst->next;
+		ft_lstadd_back(&new, tmp);
+	}
+	return (new);
 }

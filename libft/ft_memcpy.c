@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/13 16:18:30 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/10 13:55:12 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/16 17:24:46 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		map;
-	int		**matrix;
-	char 	**split_map;
+	size_t	i;
+	char	*s_dest;
+	char	*s_src;
 
-	map = open(av[1], O_RDONLY);
-	split_map = ft_split(get_next_line(av[map]));
-	matrix 
+	i = 0;
+	s_dest = (char *)dest;
+	s_src = (char *)src;
+	if (!dest && !src)
+		return (0);
+	while (i < n)
+	{
+		s_dest[i] = s_src[i];
+		i++;
+	}
+	return (dest);
 }

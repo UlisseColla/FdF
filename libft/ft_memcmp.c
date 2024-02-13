@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/13 16:18:30 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/16 14:58:30 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/16 15:00:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		map;
-	int		**matrix;
-	char 	**split_map;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	map = open(av[1], O_RDONLY);
-	split_map = ft_split(get_next_line(av[map]));
-	matrix 
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (!str1 && !str2)
+		return (0);
+	while (str1 && str2 && i < n)
+	{
+		if ((str1)[i] != (str2)[i])
+			return ((str1)[i] - (str2)[i]);
+		i++;
+	}
+	return (0);
 }

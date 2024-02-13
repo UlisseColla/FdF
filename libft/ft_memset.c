@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/13 16:18:30 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/10 12:13:49 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/26 10:44:16 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int		map;
-	int		**matrix;
-	char 	**split_map;
+	size_t			i;
+	unsigned char	*str;
 
-	map = open(av[1], O_RDONLY);
-	split_map = ft_split(get_next_line(av[map]));
-	matrix 
+	i = 0;
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (str);
 }
+
+/*int main()
+{
+	char str[6];
+	ft_memset(str, 'A', 5);
+	printf("%s\n", str);
+	return (0);
+}*/

@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/13 16:18:30 by ucolla           ###   ########.fr       */
+/*   Created: 2023/10/10 11:27:55 by ucolla            #+#    #+#             */
+/*   Updated: 2023/10/16 16:47:52 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-int main(int ac, char **av)
+int	ft_isascii(int c)
 {
-	int		map;
-	int		**matrix;
-	char 	**split_map;
-
-	map = open(av[1], O_RDONLY);
-	split_map = ft_split(get_next_line(av[map]));
-	matrix 
+	return (c >= 0 && c <= 127);
 }
