@@ -29,8 +29,9 @@ all: $(NAME)
 $(NAME): $(FUNCTIONS_OBJ)
 	$(MAKE) -C $(PATH_LIBFT)
 	$(MAKE) -C $(PATH_GNL)
-	$(CC) $(FLAGS) $(FUNCTIONS_OBJ) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) $(PATH_PRINTF)/$(FT_PRINTF) $(MINILIBX) -o $(NAME)
-	
+	$(CC) $(FLAGS) $(FUNCTIONS_OBJ) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) -o $(NAME)
+#	$(MINILIBX)
+
 #$(BONUS_NAME): all
 
 #bonus: $(BONUS_NAME)
@@ -42,13 +43,11 @@ $(NAME): $(FUNCTIONS_OBJ)
 clean:
 	$(MAKE) clean -C $(PATH_LIBFT)
 	$(MAKE) clean -C $(PATH_GNL)
-	$(MAKE) clean -C $(PATH_PRINTF)
 	rm -f $(FUNCTIONS_OBJ)
 
 fclean: clean
 	$(MAKE) fclean -C $(PATH_LIBFT)
 	$(MAKE) fclean -C $(PATH_GNL)
-	$(MAKE) fclean -C $(PATH_PRINTF)
 	rm -f $(NAME)
 
 re: fclean all
