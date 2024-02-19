@@ -2,20 +2,24 @@ FLAGS:= -Wall -Werror -Wextra
 CC:= cc
 
 NAME:= fdf
-#BONUS_NAME:= checker
 
-MINILIBX:= -L minilibx -lmlx -framework OpenGL -framework AppKit
+#MINILIBX_MACOS:= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux 
+MLX_FLAGS:= -lX11 -lXext
+MLX_PATH:= ../minilibx-linux/
+MLX:= libmlx.a
 
-PATH_LIBFT:= libft
+PATH_LIBFT:= ./libft
 LIBFT:= libft.a
 
-PATH_GNL:= libft/get_next_line
+PATH_GNL:= ./libft/get_next_line
 GNL:= get_next_line.a
 
 #PATH_PRINTF:= ft_printf
 #FT_PRINTF:= libftprintf.a
 
 FILES_LIST:= main \
+			fdf_utils \
+			ft_pixel_put \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 
@@ -29,16 +33,7 @@ all: $(NAME)
 $(NAME): $(FUNCTIONS_OBJ)
 	$(MAKE) -C $(PATH_LIBFT)
 	$(MAKE) -C $(PATH_GNL)
-	$(CC) $(FLAGS) $(FUNCTIONS_OBJ) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) -o $(NAME)
-#	$(MINILIBX)
-
-#$(BONUS_NAME): all
-
-#bonus: $(BONUS_NAME)
-#	$(MAKE) -C $(PATH_LIBFT)
-#	$(MAKE) -C $(PATH_GNL)
-#	$(MAKE) -C $(PATH_PRINTF)
-#	$(CC) $(FLAGS) -g $(BONUS) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) ./bonus_checker/push_swap_bonus.h -o $(BONUS_NAME)
+	$(CC) $(FLAGS) $(FUNCTIONS_OBJ) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) $(MLX_PATH)$(MLX) $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	$(MAKE) clean -C $(PATH_LIBFT)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ulissecolla <ulissecolla@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:57:33 by ulissecolla       #+#    #+#             */
-/*   Updated: 2024/02/17 15:02:44 by ulissecolla      ###   ########.fr       */
+/*   Updated: 2024/02/18 16:08:01 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ int ft_atoi_base(const char *str, char *str_base)
     result = 0;
     while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
         i++;
-    while (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            sign *= -1;
-        i++;
-    }
+    if (str[i] == '-')
+	{
+        sign = -1;
+		i++;
+	}
     while (str[i])
     {
         j = 0;
