@@ -6,11 +6,16 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:20:19 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/05 12:22:41 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/21 14:55:19 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/* Versione modificata di GNL dove in create_line() ho tolto:
+	if (str[i] == '\n')
+		ret[i] = '\n';
+*/
 
 char	*find_line(int fd, char **extra_char)
 {
@@ -54,8 +59,6 @@ char	*create_line(char *str)
 		ret[i] = str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-		ret[i] = '\n';
 	return (ret);
 }
 
@@ -71,14 +74,6 @@ char	*save_rest(char *str)
 		return (NULL);
 	rest = ft_strdup_gnl(str);
 	return (rest);
-}
-
-void	ft_putstr_fd_gnl(char *s, int fd)
-{
-	size_t	len;
-
-	len = ft_strlen_gnl(s);
-	write(fd, s, len);
 }
 
 char	*get_next_line(int fd)

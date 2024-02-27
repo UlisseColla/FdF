@@ -4,7 +4,7 @@ CC:= cc
 NAME:= fdf
 
 #MINILIBX_MACOS:= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux 
-MLX_FLAGS:= -lX11 -lXext
+MLX_FLAGS:= -lm -lX11 -lXext
 MLX_PATH:= ../minilibx-linux/
 MLX:= libmlx.a
 
@@ -20,6 +20,10 @@ GNL:= get_next_line.a
 FILES_LIST:= main \
 			fdf_utils \
 			ft_pixel_put \
+			ft_free \
+			put_grid \
+			build_map \
+			isometric \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 

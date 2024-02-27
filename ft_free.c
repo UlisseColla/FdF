@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pixel_put.c                                     :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 18:44:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/26 11:42:46 by ucolla           ###   ########.fr       */
+/*   Created: 2024/02/20 15:04:53 by ucolla            #+#    #+#             */
+/*   Updated: 2024/02/22 18:22:03 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_pixel_put(t_data *data, int x, int y, int color)
+void	free_matrix(t_point **matrix, int matrix_y)
 {
-	char	*dst;
-	
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	int i;
+
+	i = 0;
+	while (i < matrix_y)
+	{
+		free(matrix[i]);
+		matrix[i] = NULL;
+		i++;
+	}
+	free(matrix);
+	matrix = NULL;
+}
+
+void	free_split(char **split)
+{
+	int i;
+
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

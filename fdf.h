@@ -6,12 +6,18 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 14:22:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/19 18:44:44 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/27 18:12:34 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+
+# define WIDTH 900
+# define HEIGHT 900
+# define ESCAPE 0xff1b
+
+# define PI 3.14159265358979323846
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -32,29 +38,52 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-typedef struct	s_vars_mlx {
-	void	*mlx;
-	void	*win;
-}				t_vars_mlx;
-
 typedef struct s_point {
-    int             x;
-    int             y;
-    int             z;
+    float			x;
+    float			y;
+    float			z;
+	float			isometric_x;
+	float			isometric_y;
+	float			isometric_z;
+	float			final_x;
+	float			final_y;
+	float			screen_x;
+	float			screen_y;
     int             color;
     struct s_point  *right;
     struct s_point  *down;
 }   			t_point;
 
-int	calculate_matrix_y(char *map);
-int	calculate_matrix_x(char *map);
-int	split_len(char **split);
-int ft_convert_color(const char *str, char *str_base);
+typedef struct	s_vars_mlx {
+	char	*map_file;
+	void	*mlx;
+	void	*win;
+	t_point **map;
+	t_data	img;
+	int		matrix_y;
+	int		offset_x;
+	int		offset_y;
+}				t_vars_mlx;
 
-void	show_matrix(int y, int x, t_point ***map);
-void	free_matrix(t_point ***matrix, int matrix_y, int matrix_x);
+
+int		split_len(char **split);
+int 	ft_convert_color(const char *str, char *str_base);
+
+void	show_matrix(int matrix_y, t_point **map);
+void	free_matrix(t_point **matrix, int matrix_y);
 void	free_split(char **split);
 
 void	ft_pixel_put(t_data *data, int x, int y, int color);
+void	put_grid(t_point **map, t_data *img, t_vars_mlx mlx_data, int matrix_y);
+void	isometric(t_point *point);
+
+int		calculate_y(char *map_file);
+int		calculate_x(t_point **map);
+t_point	**build_map(int fd_map, char *map_file);
+float	padding(t_point **map, int matrix_y);
+
+/* TMP */
+void	tmp_put_grid(t_point **map, t_data *img, t_vars_mlx mlx_data, int matrix_y);
+void	tmp_isometric(t_point *point);
 
 #endif
