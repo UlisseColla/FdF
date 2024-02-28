@@ -6,11 +6,31 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:00:52 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/26 18:09:52 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/28 16:37:06 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/* int	offset_x(t_point **map)
+{
+	int	offset_x;
+	int	width_map;
+
+	width_map = calculate_x(map);
+	offset_x = (WIDTH - width_map) / 2;
+	return (offset_x);
+}
+
+int	offset_y(char *map_file)
+{
+	int	offset_y;
+	int	height_map;
+
+	height_map = calculate_y(map_file);
+	offset_y = (HEIGHT - height_map) / 2;
+	return (offset_y);
+} */
 
 void	tmp_put_grid(t_point **map, t_data *img, t_vars_mlx mlx_data, int matrix_y)
 {

@@ -6,42 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/27 18:03:27 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/28 19:12:27 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "./includes/fdf.h"
 
-int	check_map_extension(char *file, char *extension)
-{
-	int	i;
-	int	j;
-
-	i = ft_strlen(file);
-	j = ft_strlen(extension);
-	while (i >= 0 && j >= 0)
-	{
-		if (file[i] == '.' && extension[j] == '.')
-			return (0);
-		if (file[i] == extension[j])
-			j--;
-		else
-			break ;
-		i--;
-	}
-	return (1);
-}
-
-int	ft_error(int flag)
-{
-	if (flag == 1)
-		ft_putstr_fd("Not enough parameters\n", 1);
-	else
-		ft_putstr_fd("Wrong file extension. Map files must end with .fdf\n", 1);
-	return (1);
-}
-
-int	exit_window(int keysym, t_vars_mlx *mlx_data)
+static int	exit_window(int keysym, t_vars_mlx *mlx_data)
 {
 	if (keysym == ESCAPE)
 	{
@@ -51,6 +22,21 @@ int	exit_window(int keysym, t_vars_mlx *mlx_data)
 		free(mlx_data->mlx);
 		exit(1);
 	}
+	return (0);
+}
+
+static int	mlx_data_init(t_vars_mlx *data, char *file)
+{
+	data->mlx = mlx_init();
+	if (data->mlx == NULL)
+		return (1);
+	data->win = mlx_new_window(data->mlx, HEIGHT, WIDTH, "fdf");
+	data->map_file = file;
+	data->offset_x = 0;
+	data->offset_y = 0;
+	data->Y_max = 0;
+	data->Y_min = 0;
+	data->zoom = 1;
 	return (0);
 }
 
@@ -65,11 +51,8 @@ int main(int ac, char **av)
 		return (ft_error(1));
 	if (check_map_extension(av[ac - 1], ".fdf") == 1)
 		return (ft_error(42));
-	mlx_data.mlx = mlx_init();
-	if (mlx_data.mlx == NULL)
+	if (mlx_data_init(&mlx_data, av[ac - 1]) == 1)
 		return (1);
-	mlx_data.win = mlx_new_window(mlx_data.mlx, HEIGHT, WIDTH, "fdf");
-	mlx_data.map_file = av[ac - 1];
 	map_fd = open(mlx_data.map_file, O_RDONLY);
 	map = build_map(map_fd, mlx_data.map_file);
 	mlx_data.map = map;

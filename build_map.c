@@ -6,54 +6,30 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:08:56 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/27 18:12:45 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/28 19:09:39 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "./includes/fdf.h"
 
-/* float	padding(t_point **map, int matrix_y)
-{
-	float	n;
-	float	n_display;
-	float	padding;
-	float	grid;
-	float	format;
-	
-	if (calculate_x(map) > matrix_y)
-	{
-		n = calculate_x(map);
-		n_display = WIDTH;
-	}
-	else
-	{
-		n = matrix_y;
-		n_display = HEIGHT;
-	}
-	padding = (n_display / 100) * 40;
-	grid = n_display - (2 * padding);
-	format = grid / n;
-	return (format);
-} */
-
-void	ft_create_point(t_point *point, float x, float y, float z, int color)
+static void	ft_create_point(t_point *point, float x, float y, float z, int color)
 {
 	point->x = x;
 	point->y = y;
 	point->z = z;
-	point->screen_x = 0;
-	point->screen_y = 0;
-	point->final_x = 0;
-	point->final_y = 0;
 	point->isometric_x = 0;
 	point->isometric_y = 0;
 	point->isometric_z = 0;
+	point->final_x = 0;
+	point->final_y = 0;
+	point->screen_x = 0;
+	point->screen_y = 0;
 	point->color = color;
 	point->right = NULL;
 	point->down = NULL;
 }
 
-void	create_rows(char **split, int x, int y, t_point **map)
+static void	create_rows(char **split, int x, int y, t_point **map)
 {
 	char	**z_color;
 

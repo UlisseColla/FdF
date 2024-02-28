@@ -20,7 +20,7 @@ GNL:= get_next_line.a
 FILES_LIST:= main \
 			fdf_utils \
 			ft_pixel_put \
-			ft_free \
+			free_and_errors \
 			put_grid \
 			build_map \
 			isometric \
@@ -37,6 +37,7 @@ all: $(NAME)
 $(NAME): $(FUNCTIONS_OBJ)
 	$(MAKE) -C $(PATH_LIBFT)
 	$(MAKE) -C $(PATH_GNL)
+#	cowsay -f ghostbusters "Compiled!"
 	$(CC) $(FLAGS) $(FUNCTIONS_OBJ) $(PATH_LIBFT)/$(LIBFT) $(PATH_GNL)/$(GNL) $(MLX_PATH)$(MLX) $(MLX_FLAGS) -o $(NAME)
 
 clean:

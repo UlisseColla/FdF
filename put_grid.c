@@ -6,57 +6,60 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:13:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/27 18:30:58 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/28 19:03:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "./includes/fdf.h"
 
-int	offset_x(t_point **map)
+static int	offset_x(t_vars_mlx data, float zoom)
 {
-	int	offset_x;
-	int	width_map;
+	t_point	**map;
+	int		m_x;
+	int		m_y;
+	int		total_width;
+	int		offset_x;
 
-	width_map = calculate_x(map);
-	offset_x = (WIDTH - width_map) / 2;
+	map = data.map;
+	m_x = calculate_x(map) - 1;
+	m_y = calculate_y(data.map_file) - 1;
+	total_width = ((map[m_y][m_x].screen_x - map[0][0].screen_x) * zoom) / 2;
+	offset_x = (WIDTH / 2) - total_width;
 	return (offset_x);
 }
 
-int	offset_y(char *map_file)
+static int	offset_y(t_vars_mlx data, float zoom)
 {
-	int	offset_y;
-	int	height_map;
-
-	height_map = calculate_y(map_file);
-	offset_y = (HEIGHT - height_map) / 2;
+	int		total_height;
+	int		offset_y;
+	
+	total_height = ((data.Y_max - data.Y_min) * zoom) / 2;
+	offset_y = (HEIGHT / 2) - total_height;
 	return (offset_y);
 }
 
-// float	zoom(int offset_x, int offset_y)
-// {
-		
-// }
-
 void	put_grid(t_point **map, t_data *img, t_vars_mlx mlx_data, int matrix_y)
 {
-	// float	zoom;
-	// float	offset;
+	float	zoom;
 	int	x;
 	int	y;
 
+	zoom = 1.20;
 	img->img = mlx_new_image(mlx_data.mlx, HEIGHT, WIDTH);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
-	mlx_data.offset_x = offset_x(map);
-	mlx_data.offset_y = offset_y(mlx_data.map_file);
+	apply_isometric(mlx_data.map, matrix_y);
+	max_and_min_Y(map, matrix_y, &mlx_data);
+	mlx_data.offset_x = offset_x(mlx_data, zoom);
+	mlx_data.offset_y = offset_y(mlx_data, zoom);
 	y = 0;
 	while (y < matrix_y)
 	{
 		x = 0;
 		while (map[y][x].color != -1)
 		{
-			isometric(&map[y][x]);
-			float tmp_x = (map[y][x].screen_x * 1.5) + mlx_data.offset_x; //(map[y][x].screen_x * zoom) + offset_x
-			float tmp_y = (map[y][x].screen_y * 1.5) + mlx_data.offset_y / 2; //(map[y][x].screen_x * zoom) + offset_y
+			// printf("x: %.2f -- y: %.2f\n", map[y][x].screen_x, map[y][x].screen_y); 
+			float tmp_x = (map[y][x].screen_x * zoom) + mlx_data.offset_x;
+			float tmp_y = (map[y][x].screen_y * zoom) + mlx_data.offset_y;
 			if (map[y][x].color == 0 && tmp_x >= 0 && tmp_y >= 0)
 			{
 				// printf("final_x: %.2f final_y: %.2f || x: %.2f -- y:%.2f\n\n", tmp_x, tmp_y, map[y][x].x, map[y][x].y);
