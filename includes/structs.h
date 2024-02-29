@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:58:48 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 18:08:52 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/29 15:59:59 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct	s_vars_mlx {
 	int		offset_y;
 	float	Y_min;
 	float	Y_max;
+	float	X_min;
+	float	X_max;
+	float	center_X;
+	float	center_Y;
 	float	zoom;
 }				t_vars_mlx;
 

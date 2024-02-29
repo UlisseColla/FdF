@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 19:12:27 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/29 16:00:24 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ static int	mlx_data_init(t_vars_mlx *data, char *file)
 	data->offset_y = 0;
 	data->Y_max = 0;
 	data->Y_min = 0;
+	data->X_max = 0;
+	data->X_min = 0;
+	data->center_X = 0;
+	data->center_Y = 0;
 	data->zoom = 1;
 	return (0);
 }

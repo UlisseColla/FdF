@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:07:34 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 19:08:51 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/29 17:02:10 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	isometric(t_point *point)
 	float	angle_x;
 	float	angle_y;
 
-    angle_x = 35.264 * PI / 180.0;
+    angle_x = 35.0 * PI / 180.0;
     angle_y = 30.0 * PI / 180.0;
 
     // Rotation around the X-axis
@@ -95,16 +95,18 @@ void	max_and_min_Y(t_point **map, int matrix_y, t_vars_mlx *data)
 	data->Y_min = min;
 }
 
-
-/* void	tmp_isometric(t_point *point)
+void	max_and_min_X(t_vars_mlx *data)
 {
-	float angle_x = PI / 6; // 30 degrees
-    float angle_y = PI / 3; // 60 degrees
-
-    point->screen_x = (point->x - point->y) * cos(angle_x) + 10;
-    point->screen_y = -point->z + (point->x + point->y) * sin(angle_y);
-	printf("screen_x: %.2f screen_y: %.2f\n", point->screen_x, point->screen_y);
-} */
+	t_point	**map;
+	int		m_x;
+	int		m_y;
+	
+	map = data->map;
+	m_x = calculate_x(map) - 1;
+	m_y = calculate_y(data->map_file) - 1;
+	data->X_min = map[m_y][0].screen_x;
+	data->X_max = map[0][m_x].screen_x;
+}
 
 	// printf("isomt_x: %.2f isomt_y: %.2f isomt_z: %.2f\n", point->isometric_x, point->isometric_y, point->isometric_z);
 	// printf("final_x: %.2f final_y: %.2f\n\n", point->final_x, point->final_y);

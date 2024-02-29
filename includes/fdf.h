@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 14:22:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 19:12:04 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/02/29 17:02:22 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_pixel_put(t_data *data, int x, int y, int color);
 /* isometric */
 void	apply_isometric(t_point **map, int matrix_y);
 void	max_and_min_Y(t_point **map, int matrix_y, t_vars_mlx *data);
+void	max_and_min_X(t_vars_mlx *data);
 
 /* build_map */
 t_point	**build_map(int fd_map, char *map_file);
