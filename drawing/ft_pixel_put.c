@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:44:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 15:03:11 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:37:54 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fdf.h"
+#include "../includes/fdf.h"
 
 void	ft_pixel_put(t_data *data, int x, int y, int color)
 {

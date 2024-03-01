@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:07:34 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/29 17:02:10 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:38:04 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fdf.h"
+#include "../includes/fdf.h"
 
 static void	rotate_around_z(t_point *point, float angle)
 {

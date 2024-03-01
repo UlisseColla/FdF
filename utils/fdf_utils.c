@@ -6,11 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:47:55 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 15:01:55 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/01 14:38:09 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fdf.h"
+#include "../includes/fdf.h"
 
 int ft_convert_color(const char *str, char *str_base)
 {

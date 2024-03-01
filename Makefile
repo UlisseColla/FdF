@@ -17,13 +17,14 @@ GNL:= get_next_line.a
 #PATH_PRINTF:= ft_printf
 #FT_PRINTF:= libftprintf.a
 
-FILES_LIST:= main \
-			fdf_utils \
-			ft_pixel_put \
-			free_and_errors \
-			put_grid \
+FILES_LIST:= utils/fdf_utils \
+			utils/free_and_errors \
+			drawing/ft_pixel_put \
+			drawing/put_grid \
+			drawing/line_drawing \
+			transformation/isometric \
 			build_map \
-			isometric \
+			main \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 
