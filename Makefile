@@ -19,9 +19,11 @@ GNL:= get_next_line.a
 
 FILES_LIST:= utils/fdf_utils \
 			utils/free_and_errors \
+			drawing/color_handling \
+			drawing/draw_utils \
 			drawing/ft_pixel_put \
-			drawing/put_grid \
 			drawing/line_drawing \
+			drawing/put_grid \
 			transformation/isometric \
 			build_map \
 			main \

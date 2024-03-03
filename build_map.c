@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:08:56 by ucolla            #+#    #+#             */
-/*   Updated: 2024/02/28 19:09:39 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/03 19:47:45 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	create_rows(char **split, int x, int y, t_point **map)
 	{
 		z_color = ft_split(split[x], ',');
 		if (split_len(z_color) > 1)
-			ft_create_point(&map[y][x], x , y, ft_atoi(z_color[0]), ft_convert_color(z_color[1], "0123456789ABCDEF"));
+			ft_create_point(&map[y][x], x , y, ft_atoi(z_color[0]), convert_color(z_color[1]));
 		else
-			ft_create_point(&map[y][x], x, y, ft_atoi(*z_color), 0);
+			ft_create_point(&map[y][x], x, y, ft_atoi(*z_color), 0xFFFFFF);
 		x++;
 		free_split(z_color);
 	}
