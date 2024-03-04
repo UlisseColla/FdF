@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:07:34 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/03 17:05:36 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/04 16:03:52 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,3 @@ void	max_and_min_X(t_vars_mlx *data)
 	data->x_min = map[m_y][0].screen_x;
 	data->x_max = map[0][m_x].screen_x;
 }
-
-	// printf("isomt_x: %.2f isomt_y: %.2f isomt_z: %.2f\n", point->isometric_x, point->isometric_y, point->isometric_z);
-	// printf("final_x: %.2f final_y: %.2f\n\n", point->final_x, point->final_y);
-	// printf("final_x: %.2f final_y: %.2f\n", point->screen_x, point->screen_y);
-	// printf("rotate Z _x: %.2f _y: %.2f\n", point->screen_x, point->screen_y);

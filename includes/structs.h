@@ -6,14 +6,15 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:58:48 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/03 19:14:36 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/04 19:11:26 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -21,7 +22,8 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-typedef struct	s_draw {
+typedef struct s_draw
+{
 	int		x_1;
 	int		y_1;
 	int		x_2;
@@ -32,15 +34,15 @@ typedef struct	s_draw {
 	int		end_r;
 	int		end_g;
 	int		end_b;
-	int		tmp_r;
-	int		tmp_g;
-	int		tmp_b;
-	int		steps_r;
-	int		steps_g;
-	int		steps_b;
-	int		d_r;
-	int		d_g;
-	int		d_b;
+	float	tmp_r;
+	float	tmp_g;
+	float	tmp_b;
+	float	steps_r;
+	float	steps_g;
+	float	steps_b;
+	float	d_r;
+	float	d_g;
+	float	d_b;
 	int		n_step;
 	int		draw_color;
 	float	d_x;
@@ -49,28 +51,28 @@ typedef struct	s_draw {
 	float	decision;
 }				t_draw;
 
-typedef struct s_point {
-    float			x;
-    float			y;
-    float			z;
-	float			isometric_x;
-	float			isometric_y;
-	float			isometric_z;
-	float			final_x;
-	float			final_y;
-	float			screen_x;
-	float			screen_y;
-    int             color;
-    struct s_point  *right;
-    struct s_point  *down;
-}   			t_point;
+typedef struct s_point
+{
+	float		x;
+	float		y;
+	float		z;
+	float		isometric_x;
+	float		isometric_y;
+	float		isometric_z;
+	float		final_x;
+	float		final_y;
+	float		screen_x;
+	float		screen_y;
+	int			color;
+}				t_point;
 
-typedef struct	s_vars_mlx {
+typedef struct s_vars_mlx
+{
 	char	*map_file;
 	void	*mlx;
 	void	*win;
-	t_point **map;
-	t_data	img;
+	t_point	**map;
+	t_data	*img;
 	int		matrix_y;
 	int		offset_x;
 	int		offset_y;

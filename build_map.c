@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:08:56 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/03 19:47:45 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:49:24 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	ft_create_point(t_point *point, float x, float y, float z, int color
 	point->screen_x = 0;
 	point->screen_y = 0;
 	point->color = color;
-	point->right = NULL;
-	point->down = NULL;
 }
 
 static void	create_rows(char **split, int x, int y, t_point **map)
@@ -72,7 +70,6 @@ t_point	**build_map(int fd_map, char *map_file)
             return NULL;
         }
 		m_x = split_len(split);
-		// printf("Build map y -> %d\n", y);
 		map[y] = (t_point *)malloc((m_x + 1) * sizeof(t_point));
 		if (map[y] == NULL)
 			return (NULL);

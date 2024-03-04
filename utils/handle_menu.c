@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pixel_put.c                                     :+:      :+:    :+:   */
+/*   handle_menu.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 18:44:02 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 17:09:10 by ucolla           ###   ########.fr       */
+/*   Created: 2024/03/04 19:13:43 by ucolla            #+#    #+#             */
+/*   Updated: 2024/03/04 19:22:53 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	ft_pixel_put(t_data *data, int x, int y, int color)
+void	print_menu(t_vars_mlx *data)
 {
-	char	*dst;
-	
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	// printf("x and y: %d %d\n", x, y);
-	// printf("color: %d\n", color);
-	*(unsigned int*)dst = color;
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < MENU_WIDTH)
+		{
+			ft_pixel_put(data->img, x, y, 0xFF9999);
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 }

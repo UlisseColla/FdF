@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:13:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/03 19:54:54 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/04 19:25:33 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	offset_x(t_vars_mlx *data)
 	total_width = ((map[m_y][m_x].screen_x - map[0][0].screen_x)
 			* data->zoom) / 2;
 	offset_x = (WIDTH / 2) - total_width;
-	return (offset_x);
+	return (offset_x + MENU_WIDTH);
 }
 
 static int	offset_y(t_vars_mlx *data)
@@ -68,7 +68,7 @@ static void	find_zoom(t_vars_mlx *data)
 	float	d_x;
 	float	d_y;
 
-	c = 0.9;
+	c = 0.85;
 	d_x = data->x_max - data->x_min;
 	d_y = data->y_max - data->y_min;
 	if (d_y > d_x)
@@ -81,10 +81,10 @@ static void	find_zoom(t_vars_mlx *data)
 
 void	put_grid(t_point **map, t_data *img, t_vars_mlx mlx_data, int matrix_y)
 {
-	int	x;
-	int	y;
+	// int	x;
+	// int	y;
 
-	img->img = mlx_new_image(mlx_data.mlx, HEIGHT, WIDTH);
+	img->img = mlx_new_image(mlx_data.mlx, WIDTH + MENU_WIDTH, HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	apply_isometric(mlx_data.map, matrix_y);
 	max_and_min_Y(map, matrix_y, &mlx_data);
@@ -93,22 +93,22 @@ void	put_grid(t_point **map, t_data *img, t_vars_mlx mlx_data, int matrix_y)
 	mlx_data.offset_x = offset_x(&mlx_data);
 	mlx_data.offset_y = offset_y(&mlx_data);
 	apply_changes(map, &mlx_data, matrix_y);
-	y = 0;
-	while (y < matrix_y)
-	{
-		x = 0;
-		while (map[y][x].color != -1)
-		{
-			float tmp_x = map[y][x].screen_x;
-			float tmp_y = map[y][x].screen_y;
-			if (map[y][x].color == 0 && tmp_x >= 0 && tmp_y >= 0)
-				ft_pixel_put(img, (int)tmp_x, (int)tmp_y, 0xFFFFFF);
-			else if (tmp_x >= 0 && tmp_y >= 0)
-				ft_pixel_put(img, (int)tmp_x, (int)tmp_y, map[y][x].color);
-			x++;
-		}
-		y++;
-	}
+	// y = 0;
+	// while (y < matrix_y)
+	// {
+	// 	x = 0;
+	// 	while (map[y][x].color != -1)
+	// 	{
+	// 		float tmp_x = map[y][x].x;
+	// 		float tmp_y = map[y][x].y;
+	// 		if (map[y][x].color == 0 && tmp_x >= 0 && tmp_y >= 0)
+	// 			ft_pixel_put(img, (int)tmp_x, (int)tmp_y, 0xFFFFFF);
+	// 		else if (tmp_x >= 0 && tmp_y >= 0)
+	// 			ft_pixel_put(img, (int)tmp_x, (int)tmp_y, map[y][x].color);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
 	draw_map(&mlx_data, matrix_y, img);
 	mlx_put_image_to_window(mlx_data.mlx, mlx_data.win, img->img, 0, 0);
 }
