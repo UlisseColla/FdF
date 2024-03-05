@@ -6,13 +6,13 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:07:34 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 16:03:52 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/05 18:16:26 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	rotate_around_z(t_point *point, float angle)
+void	rotate_around_z(t_point *point, float angle)
 {
 	float	angleRadians;
 	float	new_x;
@@ -25,7 +25,7 @@ static void	rotate_around_z(t_point *point, float angle)
     point->screen_y = new_y;
 }
 
-static void	isometric(t_point *point)
+void	isometric(t_point *point, t_vars_mlx *data)
 {
 	float	angle_x;
 	float	angle_y;
@@ -45,23 +45,24 @@ static void	isometric(t_point *point)
     // Orthographic projection (dropping the Z-axis)
     point->screen_x = point->final_x;
     point->screen_y = point->final_y;
-
-	// Rotation around z
-	rotate_around_z(point, 30);
+	point->reset_x = point->screen_x;
+    point->reset_y = point->screen_y;
+	
+	rotate_around_z(point, data->angle_z);
 }
 
-void	apply_isometric(t_point **map, int matrix_y)
+void	apply_isometric(t_point **map, t_vars_mlx *data)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	while (j < matrix_y)
+	while (j < data->matrix_y)
 	{
 		i = 0;
 		while (map[j][i].color != -1)
 		{
-			isometric(&map[j][i]);
+			isometric(&map[j][i], data);
 			i++;
 		}
 		j++;

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:55:46 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 17:26:06 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/05 14:47:12 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	more_horizontal(t_draw *info, t_data *img)
 	set_draw_color(info);
 	while (info->x_1 != info->x_2)
 	{
-		if (info->x_1 > 0 && info->y_1 > 0)
+		if ((info->x_1 > 0 && info->x_1 < WIDTH) && (info->y_1 > 0 && info->y_1 < HEIGHT))
 			ft_pixel_put(img, (int)info->x_1, (int)info->y_1, info->draw_color);
 		if (info->x_1 < info->x_2)
 			info->x_1++;
@@ -46,7 +46,7 @@ static void	more_vertical(t_draw *info, t_data *img)
 	set_draw_color(info);
 	while (info->y_1 != info->y_2)
 	{
-		if (info->x_1 > 0 && info->y_1 > 0)
+		if ((info->x_1 > 0 && info->x_1 < WIDTH) && (info->y_1 > 0 && info->y_1 < HEIGHT))
 			ft_pixel_put(img, (int)info->x_1, (int)info->y_1, info->draw_color);
 		if (info->y_1 < info->y_2)
 			info->y_1++;

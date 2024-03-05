@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_menu.c                                      :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:13:43 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 11:06:26 by ucolla           ###   ########.fr       */
+/*   Created: 2024/03/05 16:55:57 by ucolla            #+#    #+#             */
+/*   Updated: 2024/03/05 17:30:32 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#ifndef KEYS_H
+# define KEYS_H
 
-// void	print_menu(t_vars_mlx *data)
-// {
-// 	int	x;
-// 	int	y;
+# define ESCAPE 0xff1b
 
-// 	y = 0;
-// 	while (y < HEIGHT)
-// 	{
-// 		x = 0;
-// 		while (x < MENU_WIDTH)
-// 		{
-// 			ft_pixel_put(data->img, x, y, 0xFF9999);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
-// }
+/* TRANSLATE */
+# define UP 0x077
+# define DOWN 0x073
+# define LEFT 0x061
+# define RIGHT 0x064
+
+# define RESET 0x074
+
+/* SCALE */
+# define Z_UP 0x075
+# define Z_DOWN 0x070
+
+/* ZOOM */
+# define ZOOM_IN 0x069
+# define ZOOM_OUT 0x06f
+
+/* ROTATE Z */
+# define ROTATE_Z_LEFT 0xffbe
+# define ROTATE_Z_RIGHT 0xffbf
+
+#endif

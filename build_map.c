@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:08:56 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 15:49:24 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/05 16:25:46 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	create_rows(char **split, int x, int y, t_point **map)
 	ft_create_point(&map[y][x], x, y, 0, -1);
 }
 
-t_point	**build_map(int fd_map, char *map_file)
+t_point	**build_map(t_vars_mlx *data)
 {
 	int m_y;
 	int	m_x;
@@ -54,14 +54,14 @@ t_point	**build_map(int fd_map, char *map_file)
 	char	*line;
 	char	**split;
 
-	m_y = calculate_y(map_file);
+	m_y = calculate_y(data->map_file);
 	map = (t_point **)malloc(sizeof(t_point *) * m_y);
 	if (map == NULL)
 		return (NULL);
 	y = 0;
 	while (42)
 	{
-		line = get_next_line(fd_map);
+		line = get_next_line(data->map_fd);
 		if (line == NULL)
 			break ;
 		split = ft_split(line, ' ');

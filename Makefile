@@ -27,6 +27,10 @@ FILES_LIST:= utils/fdf_utils \
 			drawing/put_grid \
 			transformation/isometric \
 			transformation/translate \
+			transformation/scale \
+			transformation/zoom \
+			transformation/rotate_z \
+			transformation/transformation_utils \
 			build_map \
 			main \
 

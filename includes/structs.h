@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:58:48 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 19:11:26 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:50:17 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,19 @@ typedef struct s_point
 	float		final_y;
 	float		screen_x;
 	float		screen_y;
+	float		reset_x;
+	float		reset_y;
 	int			color;
 }				t_point;
 
 typedef struct s_vars_mlx
 {
 	char	*map_file;
+	int		map_fd;
 	void	*mlx;
 	void	*win;
 	t_point	**map;
-	t_data	*img;
+	t_data	img;
 	int		matrix_y;
 	int		offset_x;
 	int		offset_y;
@@ -83,6 +86,10 @@ typedef struct s_vars_mlx
 	float	center_x;
 	float	center_y;
 	float	zoom;
+	float	zoom_0;
+	float	angle_z;
+	// float	offset_x_0;
+	// float	offset_y_0;
 }				t_vars_mlx;
 
 #endif

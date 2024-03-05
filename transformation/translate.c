@@ -6,29 +6,11 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:28:58 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 19:26:41 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/05 16:40:39 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	clear_window(t_vars_mlx *data)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	while (j < HEIGHT)
-	{
-		i = MENU_WIDTH;
-		while (i < WIDTH + MENU_WIDTH)
-		{
-			ft_pixel_put(data->img, i, j, 0x000000);
-			i++;
-		}
-		j++;
-	}
-}
 
 int	translate_right(t_vars_mlx *data)
 {
@@ -117,8 +99,7 @@ void	translate_hooks(int keysym, t_vars_mlx *data)
 	if (keysym == LEFT)
 		translate_left(data);
 
-	// mlx_clear_window(data->mlx, data->win);
 	clear_window(data);
-	draw_map(data, data->matrix_y, data->img);
-	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
+	draw_map(data, data->matrix_y, &(data->img));
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
