@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 18:14:54 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/06 14:49:20 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int	mlx_data_init(t_vars_mlx *data, char *file)
 	data->matrix_y = calculate_y(data->map_file);
 	data->offset_x = 0;
 	data->offset_y = 0;
-	data->y_max = 0;
-	data->y_min = 0;
-	data->x_max = 0;
-	data->x_min = 0;
-	data->center_x = 0;
-	data->center_y = 0;
+	data->y_max = 0.00;
+	data->y_min = 0.00;
+	data->x_max = 0.00;
+	data->x_min = 0.00;
+	data->center_x = 0.00;
+	data->center_y = 0.00;
 	data->zoom = 1.00;
 	data->zoom_0 = 1.00;
 	data->angle_z = 30.00;
