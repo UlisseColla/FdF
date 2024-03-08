@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:58:48 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 17:50:17 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/08 13:42:36 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_point
 	float		reset_x;
 	float		reset_y;
 	int			color;
+	int			data_set;
 }				t_point;
 
 typedef struct s_vars_mlx
@@ -88,6 +89,7 @@ typedef struct s_vars_mlx
 	float	zoom;
 	float	zoom_0;
 	float	angle_z;
+	float	zooming_factor;
 	// float	offset_x_0;
 	// float	offset_y_0;
 }				t_vars_mlx;

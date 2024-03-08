@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:13:54 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 18:16:43 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/08 14:08:16 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ int	offset_y(t_vars_mlx *data)
 
 void	find_zoom(t_vars_mlx *data)
 {
-	float	c;
 	float	d_x;
 	float	d_y;
 
-	c = 0.85;
+	if (data->zooming_factor <= 0)
+		data->zooming_factor = 0.01;
 	d_x = data->x_max - data->x_min;
 	d_y = data->y_max - data->y_min;
 	if (d_y > d_x)
-		data->zoom = c * (HEIGHT / d_y);
+		data->zoom = data->zooming_factor * (HEIGHT / d_y);
 	else
-		data->zoom = c * (WIDTH / d_x);
+		data->zoom = data->zooming_factor * (WIDTH / d_x);
 	if (data->zoom <= 0)
 		data->zoom = 0.1;
 }

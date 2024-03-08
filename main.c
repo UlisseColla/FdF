@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:12:17 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/06 14:49:20 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/08 13:13:41 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	mlx_data_init(t_vars_mlx *data, char *file)
 	data->zoom = 1.00;
 	data->zoom_0 = 1.00;
 	data->angle_z = 30.00;
+	data->zooming_factor = 0.85;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:55:46 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 14:47:12 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/08 14:08:01 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,19 +121,17 @@ void	draw_map(t_vars_mlx *data, int matrix_y, t_data *img)
 {
 	int		x;
 	int		y;
-	t_point	**map;
-
-	map = data->map;
+	
 	y = 0;
 	while (y < matrix_y)
 	{
 		x = 0;
-		while (map[y][x].color != -1)
+		while (data->map[y][x].color != -1)
 		{
-			if (map[y][x + 1].color != -1)
-				draw_line(&map[y][x], &map[y][x + 1], img);
+			if (data->map[y][x + 1].color != -1)
+				draw_line(&(data->map[y][x]), &(data->map[y][x + 1]), img);
 			if (y < matrix_y - 1)
-				draw_line(&map[y][x], &map[y + 1][x], img);
+				draw_line(&(data->map[y][x]), &(data->map[y + 1][x]), img);
 			x++;
 		}
 		y++;
