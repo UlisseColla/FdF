@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:28:58 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 16:40:39 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 14:39:15 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ void	translate_hooks(int keysym, t_vars_mlx *data)
 		translate_left(data);
 
 	clear_window(data);
-	draw_map(data, data->matrix_y, &(data->img));
+	draw_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

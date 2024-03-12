@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_menu.c                                      :+:      :+:    :+:   */
+/*   put_grid_extra.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:13:43 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/12 19:09:13 by ucolla           ###   ########.fr       */
+/*   Created: 2024/03/11 15:03:57 by ucolla            #+#    #+#             */
+/*   Updated: 2024/03/11 15:04:19 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	menu_controls(t_vars_mlx *data)
+void	draw_points_only(t_vars_mlx *data)
 {
-	mlx_string_put(data->mlx, data->menu_win, 50, 50, 0xFFFFFF, "CONTROLS");
-}
-
-void	print_menu(t_vars_mlx *data)
-{
-	int	x;
-	int	y;
-
+	int		x;
+	int		y;
+	float	tmp_x;
+	float	tmp_y;
+	
 	y = 0;
-	while (y < MENU_H)
+	while (y < data->matrix_y)
 	{
 		x = 0;
-		while (x < MENU_W)
+		while (data->map[y][x].color != -1)
 		{
-			ft_pixel_put(&(data->menu_img), x, y, 0xFF9999);
+			tmp_x = data->map[y][x].screen_x;
+			tmp_y = data->map[y][x].screen_y;
+			if (data->map[y][x].color == 0 && tmp_x >= 0 && tmp_y >= 0)
+				ft_pixel_put(&(data->img), (int)tmp_x, (int)tmp_y, 0xFFFFFF);
+			else if (tmp_x >= 0 && tmp_y >= 0)
+				ft_pixel_put(&(data->img), (int)tmp_x, (int)tmp_y, data->map[y][x].color);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx, data->menu_win, data->menu_img.img, 0, 0);
-	menu_controls(data);
 }
-

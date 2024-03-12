@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 16:07:34 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 18:16:26 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 14:44:59 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	isometric(t_point *point, t_vars_mlx *data)
     // Orthographic projection (dropping the Z-axis)
     point->screen_x = point->final_x;
     point->screen_y = point->final_y;
-	point->reset_x = point->screen_x;
-    point->reset_y = point->screen_y;
+	point->reset_s_x = point->screen_x;
+    point->reset_s_y = point->screen_y;
 	
 	rotate_around_z(point, data->angle_z);
 }
@@ -69,7 +69,7 @@ void	apply_isometric(t_point **map, t_vars_mlx *data)
 	}
 }
 
-void	max_and_min_Y(t_point **map, int matrix_y, t_vars_mlx *data)
+void	max_and_min_Y(t_vars_mlx *data)
 {
 	int		j;
 	int		i;
@@ -77,17 +77,17 @@ void	max_and_min_Y(t_point **map, int matrix_y, t_vars_mlx *data)
 	float	min;
 	
 	j = 0;
-	max = INT_MIN;
-	min = INT_MAX;
-	while (j < matrix_y)
+	max = (float)INT_MIN;
+	min = (float)INT_MAX;
+	while (j < data->matrix_y)
 	{
 		i = 0;
-		while (map[j][i].color != -1)
+		while (data->map[j][i].color != -1)
 		{
-			if (map[j][i].screen_y > max)
-				max = map[j][i].screen_y;
-			if (map[j][i].screen_y < min)
-				min = map[j][i].screen_y;
+			if (data->map[j][i].screen_y > max)
+				max = data->map[j][i].screen_y;
+			if (data->map[j][i].screen_y < min)
+				min = data->map[j][i].screen_y;
 			i++;
 		}
 		j++;

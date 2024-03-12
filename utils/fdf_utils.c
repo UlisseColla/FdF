@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:47:55 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/03 19:56:36 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 17:39:23 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	show_matrix(int matrix_y, t_point **map)
 		x = 0;
 		while (map[y][x].color != -1)
 		{
-			printf("{color-%d} \n", map[y][x].color);
+			printf("{color-> %X} \n", map[y][x].color);
 			x++;
 		}
 		printf("\n");

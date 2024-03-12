@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:55:57 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 17:30:32 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 12:12:49 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,22 @@
 # define LEFT 0x061
 # define RIGHT 0x064
 
-# define RESET 0x074
+/* RESET */
+# define RESET 0x072
+
+/* PARALLEL */
+# define PARALLEL 0x070
 
 /* SCALE */
-# define Z_UP 0x075
-# define Z_DOWN 0x070
+# define Z_UP 0x069
+# define Z_DOWN 0x06f
 
 /* ZOOM */
-# define ZOOM_IN 0x069
-# define ZOOM_OUT 0x06f
+# define ZOOM_IN 0xffab
+# define ZOOM_OUT 0xffad
 
 /* ROTATE Z */
-# define ROTATE_Z_LEFT 0xffbe
-# define ROTATE_Z_RIGHT 0xffbf
+// # define ROTATE_Z_LEFT 0xffbe
+// # define ROTATE_Z_RIGHT 0xffbf
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:55:46 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/08 14:08:01 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 14:36:45 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,21 +117,21 @@ void	draw_line(t_point *p_1, t_point *p_2, t_data *img)
 		more_vertical(&info, img);
 }
 
-void	draw_map(t_vars_mlx *data, int matrix_y, t_data *img)
+void	draw_map(t_vars_mlx *data)
 {
 	int		x;
 	int		y;
 	
 	y = 0;
-	while (y < matrix_y)
+	while (y < data->matrix_y)
 	{
 		x = 0;
 		while (data->map[y][x].color != -1)
 		{
 			if (data->map[y][x + 1].color != -1)
-				draw_line(&(data->map[y][x]), &(data->map[y][x + 1]), img);
-			if (y < matrix_y - 1)
-				draw_line(&(data->map[y][x]), &(data->map[y + 1][x]), img);
+				draw_line(&(data->map[y][x]), &(data->map[y][x + 1]), &(data->img));
+			if (y < data->matrix_y - 1)
+				draw_line(&(data->map[y][x]), &(data->map[y + 1][x]), &(data->img));
 			x++;
 		}
 		y++;

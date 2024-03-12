@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 17:09:20 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/04 14:21:26 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 15:38:26 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,4 @@ void	set_color_param(t_draw *info)
 	info->tmp_g += info->steps_g;
 	info->tmp_b += info->steps_b;
 	set_draw_color(info);
-}
-
-void	draw_colors(t_draw *info, t_data *img)
-{
-	ft_pixel_put(img, info->x_1, info->y_1, info->draw_color);
 }

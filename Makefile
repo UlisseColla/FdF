@@ -20,19 +20,21 @@ GNL:= get_next_line.a
 FILES_LIST:= utils/fdf_utils \
 			utils/free_and_errors \
 			utils/handle_menu \
+			build_map/build_map \
+			build_map/shade_definition \
 			drawing/color_handling \
 			drawing/draw_utils \
 			drawing/ft_pixel_put \
 			drawing/line_drawing \
 			drawing/put_grid \
+			drawing/put_grid_extra \
 			transformation/isometric \
 			transformation/translate \
 			transformation/scale \
 			transformation/zoom \
-			transformation/rotate_z \
 			transformation/transformation_utils \
-			build_map \
 			main \
+#			transformation/rotate_z \
 
 FUNCTIONS:= $(patsubst %, %.c, $(FILES_LIST))
 

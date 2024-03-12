@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:30:59 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/07 13:27:33 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/11 12:01:31 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	rotate_z(t_point *point, t_vars_mlx *data)
 
 	float rad = (data->angle_z * PI) / 180.0;
 
-    new_x = (cos(rad)) * (point->x - 450.00) - sin(rad) * (point->y - 450.00) + 450.00;
-    new_y = (sin(rad)) * (point->x - 450.00) + cos(rad) * (point->y - 450.00) + 450.00;
+    new_x = (cos(rad)) * (point->x - 0.00) - sin(rad) * (point->y - 0.00) + 0.00;
+    new_y = (sin(rad)) * (point->x - 0.00) + cos(rad) * (point->y - 0.00) + 0.00;
 	// printf("screen coordinates: %.2f - %.2f\n", point->x, point->y);
 	// printf("new coordinates: %.2f - %.2f\n", new_x, new_y);
     point->x = new_x;
@@ -78,7 +78,7 @@ void	rotate_z_hooks(int keysym, t_vars_mlx *data)
 	/* Trovare il punto al centro della base dell'immagine */
 	
 	clear_window(data);
-	// printf("center: %.2f - %.2f\n", data->center_x, data->center_y);
+	printf("angle_z: %.2f\n", data->angle_z);
 	// find_center(data);
 	apply_rotation(data);
 	apply_isometric(data->map, data);
