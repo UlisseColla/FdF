@@ -6,29 +6,32 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:08:56 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/12 17:56:33 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 19:04:05 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	ft_create_point(t_point *point, float x, float y, float z, int color)
+static t_point	ft_create_point(float x, float y, float z, int color)
 {
-	point->x = x;
-	point->y = y;
-	point->z = z;
-	point->isometric_x = 0;
-	point->isometric_y = 0;
-	point->isometric_z = 0;
-	point->final_x = 0;
-	point->final_y = 0;
-	point->screen_x = 0;
-	point->screen_y = 0;
-	point->color = color;
-	point->reset_s_x = 0;
-	point->reset_s_y = 0;
-	point->reset_x = x;
-	point->reset_y = y;
+	t_point	point;
+	
+	point.x = x;
+	point.y = y;
+	point.z = z;
+	point.isometric_x = 0;
+	point.isometric_y = 0;
+	point.isometric_z = 0;
+	point.final_x = 0;
+	point.final_y = 0;
+	point.screen_x = 0;
+	point.screen_y = 0;
+	point.color = color;
+	point.reset_s_x = 0;
+	point.reset_s_y = 0;
+	point.reset_x = x;
+	point.reset_y = y;
+	return (point);
 }
 
 static void	create_rows(char **split, int x, int y, t_vars_mlx *data)
@@ -41,15 +44,15 @@ static void	create_rows(char **split, int x, int y, t_vars_mlx *data)
 		z_color = ft_split(split[x], ',');
 		if (split_len(z_color) > 1)
 		{
-			ft_create_point(&(data->map[y][x]), x , y, ft_atoi(z_color[0]), convert_color(z_color[1]));
+			data->map[y][x] = ft_create_point(x , y, ft_atoi(z_color[0]), convert_color(z_color[1]));
 			data->has_color = 1;
 		}
 		else
-			ft_create_point(&(data->map[y][x]), x, y, ft_atoi(*z_color), 0xFFFF00);
+			data->map[y][x] = ft_create_point(x, y, ft_atoi(*z_color), 0xFF9900);
 		x++;
 		free_split(z_color);
 	}
-	ft_create_point(&(data->map[y][x]), x, y, 0, -1);
+	data->map[y][x] = ft_create_point(x, y, 0, -1);
 }
 
 void	build_map(t_vars_mlx *data)

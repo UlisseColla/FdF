@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 14:22:04 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/12 18:52:17 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 18:47:50 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define HEIGHT 900
 
 # define MENU_W 300
-# define MENU_H 400
+# define MENU_H 900
 
 // # define MENU_WIDTH 250
 
@@ -28,6 +28,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
+# include <float.h>
 # include <limits.h>
 # include <X11/X.h>
 # include <X11/Xlib.h>
@@ -39,6 +40,9 @@
 # include "../../minilibx-linux/mlx.h"
 // # include "./minilibx_macos/mlx.h"
 
+/* main */
+int					exit_window(t_vars_mlx *mlx_data);
+
 /* utils --> fdf_utils */
 int					split_len(char **split);
 void				show_matrix(int matrix_y, t_point **map);
@@ -47,13 +51,18 @@ int					calculate_x(t_point **map);
 unsigned long int	convert_color(const char *str);
 
 /* utils --> handle_menu */
-void				print_menu(t_vars_mlx *data);
+char				*get_map_name(t_vars_mlx *data);
+void				print_menu(t_vars_mlx *data, int flag);
 
 /* utils --> free_and_errors */
+int					check_map_size(t_vars_mlx *data);
 int					check_map_extension(char *file, char *extension);
-int					ft_error(int flag);
+int					ft_error(t_vars_mlx *data, int flag);
 void				free_matrix(t_point **matrix, int matrix_y);
 void				free_split(char **split);
+
+/* utils --> ft_ftoa */
+char				*convert_zoom(float n);
 
 /* build_map --> build_map */
 void				build_map(t_vars_mlx *data);

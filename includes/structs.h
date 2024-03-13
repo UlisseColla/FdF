@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:58:48 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/12 18:46:04 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 16:51:17 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,16 @@ typedef struct s_point
 
 typedef struct s_vars_mlx
 {
-	char	*map_file;
-	int		map_fd;
+	t_data	img;
+	t_data	menu_img;
+	t_point	**map;
 	void	*mlx;
 	void	*win;
 	void	*menu_win;
-	t_point	**map;
-	t_data	img;
-	t_data	menu_img;
+	char	*map_file;
+	char	*map_name;
+	char	*total_points;
+	int		map_fd;
 	int		has_color;
 	int		matrix_y;
 	int		offset_x;
@@ -94,8 +96,8 @@ typedef struct s_vars_mlx
 	float	center_y;
 	float	zoom;
 	float	zoom_0;
-	float	angle_z;
 	float	zooming_factor;
+	float	angle_z;
 }				t_vars_mlx;
 
 #endif

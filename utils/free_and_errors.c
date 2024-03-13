@@ -6,11 +6,38 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:04:53 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/01 14:38:12 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 16:11:34 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+int	check_map_size(t_vars_mlx *data)
+{
+	t_point	**map;
+	int		x;
+	int		y;
+	int		checker;
+
+	map = data->map;
+	y = 0;
+	checker = 0;
+	while (y < data->matrix_y)
+	{
+		x = 0;
+		while (map[y][x].color != -1)
+		{
+			x++;
+			if (y == 0)
+				checker++;
+		}
+		if (x != checker)
+			return (1);
+		y++;
+	}
+	data->total_points = ft_itoa(checker * y);
+	return (0);
+}
 
 int	check_map_extension(char *file, char *extension)
 {
@@ -32,12 +59,17 @@ int	check_map_extension(char *file, char *extension)
 	return (1);
 }
 
-int	ft_error(int flag)
+int	ft_error(t_vars_mlx *data, int flag)
 {
 	if (flag == 1)
 		ft_putstr_fd("Not enough parameters\n", 1);
-	else
+	else if (flag == 2)
 		ft_putstr_fd("Wrong file extension. Map files must end with .fdf\n", 1);
+	else
+	{
+		exit_window(data);
+		ft_putstr_fd("Wrong map size. Not all rows are the same size\n", 1);
+	}
 	return (1);
 }
 

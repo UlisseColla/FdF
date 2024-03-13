@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:04:45 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/12 18:33:26 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:28:35 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	put_base_colors(t_point *point, int flag)
 	int	g;
 	int	b;
 
-	r = 255;
-	g = 255;
-	b = 255;
 	if (flag == 1)
 	{
 		r = 0;
@@ -55,6 +52,12 @@ void	put_base_colors(t_point *point, int flag)
 	{
 		r = 255;
 		g = 0;
+		b = 0;
+	}
+	else
+	{
+		r = 255;
+		g = 255;
 		b = 0;
 	}
 	point->color = (r << 16) | (g << 8) | b;
@@ -91,7 +94,6 @@ void	define_colors(t_vars_mlx *data, int i, int j)
 
 	max = INT_MIN;
 	min = INT_MAX;
-	max_and_min_Z(data, 0, 0);
 	while (j < data->matrix_y)
 	{
 		i = 0;

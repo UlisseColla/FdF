@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:12:18 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/05 18:15:45 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:18:06 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	scale_hooks(int keysym, t_vars_mlx *data)
 		
 	clear_window(data);
 	put_grid(&(data->img), data);
+	print_menu(data, 1);
 }

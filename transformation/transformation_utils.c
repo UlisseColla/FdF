@@ -6,7 +6,7 @@
 /*   By: ucolla <ucolla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:21:08 by ucolla            #+#    #+#             */
-/*   Updated: 2024/03/11 15:07:43 by ucolla           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:20:39 by ucolla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	reset_hook(t_vars_mlx *data)
 	clear_window(data);
 	reset_parameters(data, 42, 0, 0);
 	put_grid(&(data->img), data);
+	print_menu(data, 1);
 }
 
 void	set_parallel(t_vars_mlx *data)
@@ -97,4 +98,5 @@ void	parallel_hook(t_vars_mlx *data)
 	set_parallel(data);
 	draw_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	print_menu(data, 42);
 }

@@ -20,6 +20,7 @@ GNL:= get_next_line.a
 FILES_LIST:= utils/fdf_utils \
 			utils/free_and_errors \
 			utils/handle_menu \
+			utils/convert_zoom \
 			build_map/build_map \
 			build_map/shade_definition \
 			drawing/color_handling \
